@@ -1,8 +1,7 @@
-import { inputRef, markupContainerRef } from './refs';
+import { inputRef, markupContainerRef } from './js/refs';
 import debounce from 'lodash/debounce';
-import fetchCountries from './fetchCountries';
-import updateCountriesList from './update-countries';
-​
+import fetchCountries from './js/fetchCountries';
+import updateCountriesList from './js/update-countries';
 inputRef.addEventListener('input', debounce(searchCountries, 500));
 ​
 function searchCountries(event) {

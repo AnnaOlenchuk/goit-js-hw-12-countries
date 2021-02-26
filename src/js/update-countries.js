@@ -1,7 +1,7 @@
 import countriesTpl from "../templates/countries-list.hbs";
 import countryTpl from "../templates/countries-item.hbs";
-import { markupContainerRef } from "./refs";
-import alert from "./notify";
+import { markupContainerRef } from "./js/refs";
+import alert from "./js/notify";
 ​
 function updateCountriesList(data) {
     const markupAll = countriesTpl(data);
