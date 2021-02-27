@@ -1,17 +1,28 @@
 import countriesTpl from "../templates/countries-list.hbs";
 import countryTpl from "../templates/countries-item.hbs";
-import { markupContainerRef } from "./js/refs";
-import alert from "./js/notify";
-​
+import { markupContainerRef } from "./refs";
+import alert from "./notify";
+
 function updateCountriesList(data) {
-    const markupAll = countriesTpl(data);
-    const markupOne = countryTpl(data);
-​
+  const markupAll = countriesTpl(data);
+  const markupOne = countryTpl(data);
+
+   if (data.status === 404) {
+      alert({
+        type: 'notice',
+        text: 'No matches found',
+        delay: 2000,
+        width: '300px',
+        maxTextHeight: null,
+      });
+      return;
+    }
+  
   if (data.length === 1) {
     markupContainerRef.insertAdjacentHTML("beforeend", markupOne);
     return;
   }
-​
+  
   if (data.length > 10) {
     alert({
       type: "error",
@@ -20,8 +31,8 @@ function updateCountriesList(data) {
     });
     return;
   }
-​
+  
   markupContainerRef.insertAdjacentHTML("beforeend", markupAll);
 }
-​
+
 export default updateCountriesList;
